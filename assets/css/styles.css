@@ -1,3 +1,21 @@
 * {
   color: red;
 }
+
+#game-grid {
+  width: 300px;
+  height: 300px;
+  border: solid black 2px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#game-grid div {
+  width: 30px;
+  height: 30px;
+}
+
+.math-rocket {
+  background-color: aquamarine;
+  border-radius: 20%;
+}
