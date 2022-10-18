@@ -63,6 +63,21 @@ function moveRocket(event) {
   }
 }
 
+function storeRoom() {
+  // need to get current ID's on all squares, such that it can be recreated.
+  var currentRoom = [];
+
+  for (let index = 0; index < 100; index++) {
+    var string = "[data-number='" + index + "']";
+    const welly = document.querySelector(string);
+    var classType = welly.getAttribute("class");
+
+    currentRoom.push(classType);
+  }
+
+  console.log(currentRoom);
+}
+
 createSquares(100);
 
 placeRocket();
