@@ -20,12 +20,14 @@ function moveRocket(event) {
   if (event.key == "ArrowUp") {
     const current = document.querySelector(".math-rocket");
     var location = parseInt(current.getAttribute("data-number"));
+
     if (location > 10) {
       location -= 10;
-      current.setAttribute("class", "square");
+      current.classList.remove("math-rocket");
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      moved.setAttribute("class", "math-rocket");
+      console.log(moved.classList);
+      moved.classList.add("math-rocket");
     }
   }
   if (event.key == "ArrowLeft") {
@@ -33,10 +35,13 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (!(location % 10 === 0)) {
       location--;
-      current.setAttribute("class", "square");
+      // current.setAttribute("class", "square");
+      current.classList.remove("math-rocket");
+
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      moved.setAttribute("class", "math-rocket");
+      // moved.setAttribute("class", "math-rocket");
+      moved.classList.add("math-rocket");
     }
   }
   if (event.key == "ArrowRight") {
@@ -44,10 +49,13 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (!(location % 10 === 9)) {
       location++;
-      current.setAttribute("class", "square");
+      // current.setAttribute("class", "square");
+      current.classList.remove("math-rocket");
+
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      moved.setAttribute("class", "math-rocket");
+      // moved.setAttribute("class", "math-rocket");
+      moved.classList.add("math-rocket");
     }
   }
   if (event.key == "ArrowDown") {
@@ -55,10 +63,13 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (location < 90) {
       location += 10;
-      current.setAttribute("class", "square");
+      // current.setAttribute("class", "square");
+      current.classList.remove("math-rocket");
+
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      moved.setAttribute("class", "math-rocket");
+      // moved.setAttribute("class", "math-rocket");
+      moved.classList.add("math-rocket");
     }
   }
 }
@@ -69,6 +80,7 @@ function storeRoom() {
 
   for (let index = 0; index < 100; index++) {
     var string = "[data-number='" + index + "']";
+    console.log(string);
     const welly = document.querySelector(string);
     var classType = welly.getAttribute("class");
 
@@ -80,6 +92,17 @@ function storeRoom() {
 
 createSquares(100);
 
+// I want to get gaps top, left, middle and bottom to simulate exits
+
+// 49 on the right
+var rightExit = document.querySelector("[data-number='49']");
+console.log(rightExit);
+rightExit.setAttribute("class", "square right-exit");
+// 40 on the left
+// 5 top
+// 95 bottom
+
 placeRocket();
+// storeRoom();
 
 addEventListener("keydown", moveRocket);
