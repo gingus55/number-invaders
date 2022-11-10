@@ -107,6 +107,19 @@ function setExits() {
   // 95 bottom
 }
 
+function attack(e) {
+  if (e.keyCode == 32) {
+    const current = document.querySelector(".math-rocket");
+    current.classList.add("bomb");
+    console.log("spacebar");
+  }
+}
+
+function keyPress(key) {
+  moveRocket(key);
+  attack(key);
+}
+
 startGame();
 
-addEventListener("keydown", moveRocket);
+addEventListener("keydown", keyPress);

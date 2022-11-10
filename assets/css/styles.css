@@ -20,6 +20,11 @@
   border-radius: 20%;
 }
 
+.bomb {
+  background-color: grey;
+  border-radius: 50%;
+}
+
 .right-exit,
 .left-exit,
 .up-exit,
