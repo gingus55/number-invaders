@@ -1,6 +1,15 @@
 console.log("Howdy!");
 const gameGrid = document.querySelector("#game-grid");
 
+function startGame() {
+  createSquares(100);
+
+  placeRocket();
+
+  // currently hardcoded exits
+  setExits();
+}
+
 function createSquares(number) {
   console.log(number + " squares are being created");
   for (let i = 0; i < number; i++) {
@@ -26,7 +35,6 @@ function moveRocket(event) {
       current.classList.remove("math-rocket");
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      console.log(moved.classList);
       moved.classList.add("math-rocket");
     }
   }
@@ -35,12 +43,9 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (!(location % 10 === 0)) {
       location--;
-      // current.setAttribute("class", "square");
       current.classList.remove("math-rocket");
-
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      // moved.setAttribute("class", "math-rocket");
       moved.classList.add("math-rocket");
     }
   }
@@ -49,12 +54,9 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (!(location % 10 === 9)) {
       location++;
-      // current.setAttribute("class", "square");
       current.classList.remove("math-rocket");
-
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      // moved.setAttribute("class", "math-rocket");
       moved.classList.add("math-rocket");
     }
   }
@@ -63,12 +65,9 @@ function moveRocket(event) {
     var location = parseInt(current.getAttribute("data-number"));
     if (location < 90) {
       location += 10;
-      // current.setAttribute("class", "square");
       current.classList.remove("math-rocket");
-
       var string = "[data-number='" + location + "']";
       const moved = document.querySelector(string);
-      // moved.setAttribute("class", "math-rocket");
       moved.classList.add("math-rocket");
     }
   }
@@ -90,19 +89,24 @@ function storeRoom() {
   console.log(currentRoom);
 }
 
-createSquares(100);
+function setExits() {
+  // I want to get gaps top, left, middle and bottom to simulate exits
 
-// I want to get gaps top, left, middle and bottom to simulate exits
+  // 49 on the right
+  var rightExit = document.querySelector("[data-number='49']");
+  var leftExit = document.querySelector("[data-number='40']");
+  var upExit = document.querySelector("[data-number='5']");
+  var downExit = document.querySelector("[data-number='95']");
 
-// 49 on the right
-var rightExit = document.querySelector("[data-number='49']");
-console.log(rightExit);
-rightExit.setAttribute("class", "square right-exit");
-// 40 on the left
-// 5 top
-// 95 bottom
+  rightExit.classList.add("right-exit");
+  leftExit.classList.add("left-exit");
+  upExit.classList.add("up-exit");
+  downExit.classList.add("down-exit");
+  // 40 on the left
+  // 5 top
+  // 95 bottom
+}
 
-placeRocket();
-// storeRoom();
+startGame();
 
 addEventListener("keydown", moveRocket);

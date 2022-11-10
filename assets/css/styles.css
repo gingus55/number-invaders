@@ -20,7 +20,10 @@
   border-radius: 20%;
 }
 
-.right-exit {
+.right-exit,
+.left-exit,
+.up-exit,
+.down-exit {
   background-color: lightcoral;
   /* border-right: solid white 2px;
   float: right; */
