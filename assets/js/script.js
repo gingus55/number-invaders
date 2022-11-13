@@ -73,6 +73,8 @@ function moveRocket(event) {
   }
 }
 
+const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+
 function storeRoom() {
   // need to get current ID's on all squares, such that it can be recreated.
   var currentRoom = [];
@@ -85,6 +87,10 @@ function storeRoom() {
 
     currentRoom.push(classType);
   }
+
+  rooms.push(currentRoom);
+
+  localStorage.setItem("rooms", JSON.stringify(rooms));
 
   console.log(currentRoom);
 }
