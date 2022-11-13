@@ -29,8 +29,8 @@ function moveRocket(event) {
   if (event.key == "ArrowUp") {
     const current = document.querySelector(".math-rocket");
     var location = parseInt(current.getAttribute("data-number"));
-
-    if (location > 10) {
+    console.log(location);
+    if (location >= 10) {
       location -= 10;
       current.classList.remove("math-rocket");
       var string = "[data-number='" + location + "']";
