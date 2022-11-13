@@ -2,9 +2,13 @@ console.log("Howdy!");
 const gameGrid = document.querySelector("#game-grid");
 
 function startGame() {
-  createSquares(100);
+  createRoom(100, 95);
+}
 
-  placeRocket();
+function createRoom(square, rocket) {
+  createSquares(square);
+
+  placeRocket(rocket);
 
   // currently hardcoded exits
   setExits();
@@ -20,8 +24,9 @@ function createSquares(number) {
   }
 }
 
-function placeRocket() {
-  const startLocation = document.querySelector('[data-number="95"]');
+function placeRocket(n) {
+  var string = `[data-number="${n}"]`;
+  const startLocation = document.querySelector(string);
   startLocation.setAttribute("class", "math-rocket");
 }
 
