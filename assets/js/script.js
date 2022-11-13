@@ -35,6 +35,10 @@ function moveRocket(event) {
     const current = document.querySelector(".math-rocket");
     var location = parseInt(current.getAttribute("data-number"));
     console.log(location);
+    if (location === 5) {
+      storeRoom();
+      createRoom(100, 95);
+    }
     if (location >= 10) {
       location -= 10;
       current.classList.remove("math-rocket");
@@ -86,7 +90,7 @@ function storeRoom() {
 
   for (let index = 0; index < 100; index++) {
     var string = "[data-number='" + index + "']";
-    console.log(string);
+    // console.log(string);
     const welly = document.querySelector(string);
     var classType = welly.getAttribute("class");
 
@@ -97,7 +101,7 @@ function storeRoom() {
 
   localStorage.setItem("rooms", JSON.stringify(rooms));
 
-  console.log(currentRoom);
+  // console.log(currentRoom);
 }
 
 function setExits() {
@@ -122,7 +126,7 @@ function attack(e) {
   if (e.keyCode == 32) {
     const current = document.querySelector(".math-rocket");
     current.classList.add("bomb");
-    console.log("spacebar");
+    // console.log("spacebar");
   }
 }
 
