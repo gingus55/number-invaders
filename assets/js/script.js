@@ -6,6 +6,7 @@ function startGame() {
 }
 
 function createRoom(square, rocket) {
+  gameGrid.innerHTML = "";
   createSquares(square);
 
   placeRocket(rocket);
