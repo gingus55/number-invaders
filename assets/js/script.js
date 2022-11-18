@@ -1,3 +1,5 @@
+const { getFromLocalStorage } = import("./utils");
+
 console.log("Howdy!");
 const gameGrid = document.querySelector("#game-grid");
 
@@ -7,11 +9,11 @@ const startGame = () => {
   createRoom(100, 95);
 };
 
-const createRoom = (square, rocket) => {
+const createRoom = (squareNumber, rocketLocation) => {
   gameGrid.innerHTML = "";
-  createSquares(square);
+  createSquares(squareNumber);
 
-  placeRocket(rocket);
+  placeRocket(rocketLocation);
 
   // currently hardcoded exits
   setExits();
@@ -41,6 +43,7 @@ const moveRocket = (event) => {
     if (location === 5) {
       storeRoom();
       createRoom(100, 95);
+      position[1]++;
     }
     if (location >= 10) {
       location -= 10;
@@ -85,17 +88,17 @@ const moveRocket = (event) => {
   }
 };
 
-const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+// const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 
 const storeRoom = () => {
   // need to get current ID's on all squares, such that it can be recreated.
-  let currentRoom = [];
+  const currentRoom = [];
 
   for (let index = 0; index < 100; index++) {
-    let string = "[data-number='" + index + "']";
+    const string = "[data-number='" + index + "']";
     // console.log(string);
     const welly = document.querySelector(string);
-    let classType = welly.getAttribute("class");
+    const classType = welly.getAttribute("class");
 
     currentRoom.push(classType);
   }
@@ -104,7 +107,7 @@ const storeRoom = () => {
     position: position,
     room: currentRoom,
   };
-
+  let rooms = getFromLocalStorage();
   rooms.push(room);
 
   localStorage.setItem("rooms", JSON.stringify(rooms));
