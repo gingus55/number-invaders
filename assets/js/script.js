@@ -1,9 +1,14 @@
-const { getFromLocalStorage } = import("./utils");
-
 console.log("Howdy!");
 const gameGrid = document.querySelector("#game-grid");
 
 let position = [0, 0];
+
+const putInLocalStorage = () => {};
+
+const getFromLocalStorage = () => {
+  const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+  return rooms;
+};
 
 const startGame = () => {
   createRoom(100, 95);
