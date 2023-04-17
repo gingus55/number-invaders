@@ -2,6 +2,13 @@
   color: red;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #game-grid {
   width: 300px;
   height: 300px;

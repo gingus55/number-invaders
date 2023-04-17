@@ -61,6 +61,12 @@ const moveRocket = (event) => {
   if (event.key == "ArrowLeft") {
     const current = document.querySelector(".math-rocket");
     let location = parseInt(current.getAttribute("data-number"));
+    console.log(location);
+    if (location === 40) {
+      storeRoom();
+      createRoom(100, 49);
+      position[0]--;
+    }
     if (!(location % 10 === 0)) {
       location--;
       current.classList.remove("math-rocket");
@@ -72,6 +78,12 @@ const moveRocket = (event) => {
   if (event.key == "ArrowRight") {
     const current = document.querySelector(".math-rocket");
     let location = parseInt(current.getAttribute("data-number"));
+    console.log(location);
+    if (location === 49) {
+      storeRoom();
+      createRoom(100, 40);
+      position[0]++;
+    }
     if (!(location % 10 === 9)) {
       location++;
       current.classList.remove("math-rocket");
@@ -83,6 +95,12 @@ const moveRocket = (event) => {
   if (event.key == "ArrowDown") {
     const current = document.querySelector(".math-rocket");
     let location = parseInt(current.getAttribute("data-number"));
+    console.log(location);
+    if (location === 95) {
+      storeRoom();
+      createRoom(100, 5);
+      position[1]--;
+    }
     if (location < 90) {
       location += 10;
       current.classList.remove("math-rocket");
