@@ -47,8 +47,9 @@ const moveRocket = (event) => {
     console.log(location);
     if (location === 5) {
       storeRoom();
-      createRoom(100, 95);
       position[1]++;
+      checkRoom();
+      createRoom(100, 95);
     }
     if (location >= 10) {
       location -= 10;
@@ -64,8 +65,9 @@ const moveRocket = (event) => {
     console.log(location);
     if (location === 40) {
       storeRoom();
-      createRoom(100, 49);
       position[0]--;
+      checkRoom();
+      createRoom(100, 49);
     }
     if (!(location % 10 === 0)) {
       location--;
@@ -81,8 +83,9 @@ const moveRocket = (event) => {
     console.log(location);
     if (location === 49) {
       storeRoom();
-      createRoom(100, 40);
       position[0]++;
+      checkRoom();
+      createRoom(100, 40);
     }
     if (!(location % 10 === 9)) {
       location++;
@@ -98,8 +101,9 @@ const moveRocket = (event) => {
     console.log(location);
     if (location === 95) {
       storeRoom();
-      createRoom(100, 5);
       position[1]--;
+      checkRoom();
+      createRoom(100, 5);
     }
     if (location < 90) {
       location += 10;
@@ -112,6 +116,23 @@ const moveRocket = (event) => {
 };
 
 // const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+
+const checkRoom = () => {
+  console.log("checking the room");
+  var a = position;
+
+  let rooms = getFromLocalStorage();
+  for (let room = 0; room < rooms.length; room++) {
+    var b = rooms[room].position;
+    // a = JSON.stringify(a);
+    console.log(a, b);
+    if (a == b) {
+      console.log("You've been here before!");
+    } else {
+      console.log("new room");
+    }
+  }
+};
 
 const storeRoom = () => {
   // need to get current ID's on all squares, such that it can be recreated.
