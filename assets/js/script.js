@@ -5,20 +5,20 @@ let position = [0, 0];
 
 const putInLocalStorage = () => {};
 
+const startGame = () => {
+  clearLocalStorage();
+  createNewRoom(100, 95);
+};
+
 const getFromLocalStorage = () => {
   const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
   return rooms;
 };
 
 const clearLocalStorage = () => {
-  const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+  let rooms = JSON.parse(localStorage.getItem("rooms")) || [];
   rooms = [];
   localStorage.setItem("rooms", JSON.stringify(rooms));
-};
-
-const startGame = () => {
-  clearLocalStorage();
-  createNewRoom(100, 95);
 };
 
 const createNewRoom = (squareNumber, rocketLocation) => {
