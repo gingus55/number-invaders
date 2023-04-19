@@ -143,12 +143,13 @@ const checkRoom = () => {
   let rooms = getFromLocalStorage();
   for (let room = 0; room < rooms.length; room++) {
     var b = rooms[room].position;
-    // a = JSON.stringify(a);
-    console.log(a, b);
     if (arraysEqual(a, b)) {
       console.log("You've been here before!");
+      // NEED TO GET STATE OF PREVIOUS ROOM
+      //  GENERATE PREVIOUS ROOM
     } else {
       console.log("new room");
+      // GENERATE NEW ROOM
     }
   }
 };
