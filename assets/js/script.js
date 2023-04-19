@@ -10,7 +10,14 @@ const getFromLocalStorage = () => {
   return rooms;
 };
 
+const clearLocalStorage = () => {
+  const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+  rooms = [];
+  localStorage.setItem("rooms", JSON.stringify(rooms));
+};
+
 const startGame = () => {
+  clearLocalStorage();
   createNewRoom(100, 95);
 };
 
