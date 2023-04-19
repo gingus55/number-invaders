@@ -11,10 +11,10 @@ const getFromLocalStorage = () => {
 };
 
 const startGame = () => {
-  createRoom(100, 95);
+  createNewRoom(100, 95);
 };
 
-const createRoom = (squareNumber, rocketLocation) => {
+const createNewRoom = (squareNumber, rocketLocation) => {
   gameGrid.innerHTML = "";
   createSquares(squareNumber);
 
@@ -49,7 +49,7 @@ const moveRocket = (event) => {
       storeRoom();
       position[1]++;
       checkRoom();
-      createRoom(100, 95);
+      createNewRoom(100, 95);
     }
     if (location >= 10) {
       location -= 10;
@@ -67,7 +67,7 @@ const moveRocket = (event) => {
       storeRoom();
       position[0]--;
       checkRoom();
-      createRoom(100, 49);
+      createNewRoom(100, 49);
     }
     if (!(location % 10 === 0)) {
       location--;
@@ -85,7 +85,7 @@ const moveRocket = (event) => {
       storeRoom();
       position[0]++;
       checkRoom();
-      createRoom(100, 40);
+      createNewRoom(100, 40);
     }
     if (!(location % 10 === 9)) {
       location++;
@@ -103,7 +103,7 @@ const moveRocket = (event) => {
       storeRoom();
       position[1]--;
       checkRoom();
-      createRoom(100, 5);
+      createNewRoom(100, 5);
     }
     if (location < 90) {
       location += 10;
@@ -117,6 +117,18 @@ const moveRocket = (event) => {
 
 // const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 
+const arraysEqual = (arr1, arr2) => {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
 const checkRoom = () => {
   console.log("checking the room");
   var a = position;
@@ -126,7 +138,7 @@ const checkRoom = () => {
     var b = rooms[room].position;
     // a = JSON.stringify(a);
     console.log(a, b);
-    if (a == b) {
+    if (arraysEqual(a, b)) {
       console.log("You've been here before!");
     } else {
       console.log("new room");
